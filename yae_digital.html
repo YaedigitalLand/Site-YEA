@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YAE Digital - Soluções de Marketing Digital</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: "Inconsolata", monospace;
+            font-optical-sizing: auto;
+            font-style: normal;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            display: flex;
+            gap: 40px;
+            max-width: 1200px;
+            width: 100%;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-section {
+            flex: 1;
+            min-width: 300px;
+            color: white;
+            animation: slideInLeft 0.8s ease-out;
+        }
+
+        .hero-section h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-section .tagline {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            opacity: 0.95;
+            line-height: 1.6;
+        }
+
+        .features {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .feature {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.1rem;
+        }
+
+        .feature::before {
+            content: "✓";
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #85ff85;
+        }
+
+        .form-container {
+            background-color: rgb(255, 255, 255);
+            border-radius: 20px;
+            box-shadow:
+                rgba(0, 0, 0, 0.25) 0px 54px 55px,
+                rgba(0, 0, 0, 0.12) 0px -12px 30px,
+                rgba(0, 0, 0, 0.12) 0px 4px 6px,
+                rgba(0, 0, 0, 0.17) 0px 12px 13px,
+                rgba(0, 0, 0, 0.09) 0px -3px 5px;
+            padding: 40px;
+            flex: 1;
+            min-width: 350px;
+            animation: slideInRight 0.8s ease-out;
+        }
+
+        .form-container h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #333;
+            font-size: 1.8rem;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            margin-bottom: 8px;
+            color: #555;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .form-group input {
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-family: "Inconsolata", monospace;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .form-group input::placeholder {
+            color: #999;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 15px 25px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: "Inconsolata", monospace;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            min-height: 55px;
+        }
+
+        .btn-submit {
+            background-color: #667eea;
+            color: white;
+            flex: 2;
+        }
+
+        .btn-submit:hover {
+            background-color: #5568d3;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .btn-whatsapp {
+            background-color: #25d366;
+            color: white;
+            text-decoration: none;
+            flex: 1;
+        }
+
+        .btn-whatsapp:hover {
+            background-color: #20ba5a;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3);
+        }
+
+        .whatsapp-icon::before {
+            content: "💬";
+        }
+
+        .success-message {
+            display: none;
+            background-color: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+            border: 1px solid #c3e6cb;
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                gap: 20px;
+            }
+
+            .hero-section h1 {
+                font-size: 2rem;
+            }
+
+            .hero-section .tagline {
+                font-size: 1.1rem;
+            }
+
+            .form-container {
+                padding: 30px 20px;
+                min-width: 100%;
+            }
+
+            .button-group {
+                flex-direction: column;
+            }
+
+            .btn-submit {
+                flex: 1;
+            }
+
+            .btn-whatsapp {
+                flex: 1;
+            }
+        }
+
+        .social-links {
+            text-align: center;
+            margin-top: 20px;
+            color: #999;
+            font-size: 0.9rem;
+        }
+
+        .social-links a {
+            color: #667eea;
+            text-decoration: none;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #764ba2;
+        }
+
+        .info-box {
+            background: rgba(102, 126, 234, 0.1);
+            border-left: 4px solid #667eea;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            color: #555;
+            font-size: 0.95rem;
+        }
+
+        .info-box strong {
+            color: #667eea;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Seção Hero -->
+        <div class="hero-section">
+            <h1>YAE Digital</h1>
+            <p class="tagline">Transforme seu negócio com soluções digitais inovadoras e estratégias de marketing que realmente funcionam.</p>
+            
+            <div class="features">
+                <div class="feature">Estratégias personalizadas para sua marca</div>
+                <div class="feature">Atendimento rápido e profissional</div>
+                <div class="feature">Resultados comprovados</div>
+                <div class="feature">Suporte contínuo ao seu crescimento</div>
+            </div>
+        </div>
+
+        <!-- Formulário de Contato -->
+        <div class="form-container">
+            <h2>Vamos Conversar</h2>
+            
+            <div class="info-box">
+                <strong>💡 Dica:</strong> Preencha o formulário para que nossa equipe entre em contato com você em breve.
+            </div>
+
+            <form id="contactForm">
+                <div class="success-message" id="successMessage">
+                    ✓ Obrigado! Suas informações foram enviadas com sucesso. Entraremos em contato em breve!
+                </div>
+
+                <div class="form-group">
+                    <label for="nome">Nome Completo</label>
+                    <input 
+                        type="text" 
+                        id="nome" 
+                        name="nome" 
+                        placeholder="Seu nome" 
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="empresa">Nome da Empresa</label>
+                    <input 
+                        type="text" 
+                        id="empresa" 
+                        name="empresa" 
+                        placeholder="Sua empresa" 
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input 
+                        type="email" 
+                        id="email" 
+                        name="email" 
+                        placeholder="seu.email@empresa.com" 
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="telefone">Telefone</label>
+                    <input 
+                        type="tel" 
+                        id="telefone" 
+                        name="telefone" 
+                        placeholder="(11) 9 9999-9999" 
+                        pattern="[0-9\s\-\(\)]*"
+                        required
+                    >
+                </div>
+
+                <div class="button-group">
+                    <button type="submit" class="btn btn-submit">Enviar Mensagem</button>
+                    <a href="https://wa.me/5511999999999?text=Olá%20YAE%20Digital!%20Gostaria%20de%20conhecer%20mais%20sobre%20seus%20serviços." 
+                       class="btn btn-whatsapp whatsapp-icon" 
+                       target="_blank">
+                        WhatsApp
+                    </a>
+                </div>
+            </form>
+
+            <div class="social-links">
+                <p>Siga-nos nas redes sociais</p>
+                <a href="https://www.instagram.com/yaelabdigital/" target="_blank">Instagram</a>
+                <a href="https://www.linkedin.com/company/yae-digital" target="_blank">LinkedIn</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const form = document.getElementById('contactForm');
+        const successMessage = document.getElementById('successMessage');
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Capturar dados do formulário
+            const formData = {
+                nome: document.getElementById('nome').value,
+                empresa: document.getElementById('empresa').value,
+                email: document.getElementById('email').value,
+                telefone: document.getElementById('telefone').value
+            };
+
+            // Aqui você pode enviar os dados para um servidor
+            console.log('Dados do formulário:', formData);
+
+            // Mostrar mensagem de sucesso
+            successMessage.style.display = 'block';
+
+            // Limpar formulário
+            form.reset();
+
+            // Esconder mensagem após 5 segundos
+            setTimeout(() => {
+                successMessage.style.display = 'none';
+            }, 5000);
+
+            // Opcional: Enviar dados para um email via webhook
+            // Você pode usar serviços como FormSubmit, Netlify Forms, ou seu próprio backend
+        });
+
+        // Formatação automática do telefone
+        const telefoneInput = document.getElementById('telefone');
+        telefoneInput.addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length > 0) {
+                if (value.length <= 2) {
+                    value = `(${value}`;
+                } else if (value.length <= 7) {
+                    value = `(${value.slice(0, 2)}) ${value.slice(2)}`;
+                } else {
+                    value = `(${value.slice(0, 2)}) ${value.slice(2, 7)}-${value.slice(7, 11)}`;
+                }
+            }
+            e.target.value = value;
+        });
+    </script>
+</body>
+</html>
